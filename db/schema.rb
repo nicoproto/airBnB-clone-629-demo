@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_06_01_155335) do
     t.date "start_date"
     t.date "end_date"
     t.integer "total_price"
-    t.string "status", default: "0"
+    t.integer "status", default: 0
     t.bigint "pokemon_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
