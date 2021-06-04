@@ -40,4 +40,8 @@ class BookingsController < ApplicationController
   def booking_update_params
     params.require(:status)
   end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 end
