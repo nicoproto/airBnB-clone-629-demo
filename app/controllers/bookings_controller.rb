@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
-  def show
-    @booking = Booking.find(params[:id])
-  end
+  before_action :set_booking, only: [:show, :update]
+
+  def show; end
 
   def new
     @pokemon = Pokemon.find(params[:pokemon_id])
@@ -21,9 +21,18 @@ class BookingsController < ApplicationController
     end
   end
 
+  def update
+    @booking.send("#{params[:status]}!")
+    redirect_to dashboard_path
+  end
+
   private
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  def booking_update_params
+    params.require(:status)
   end
 end
