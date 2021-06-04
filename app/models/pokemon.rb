@@ -7,6 +7,7 @@ class Pokemon < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
+  has_one_attached :photo
 
   validates :name, :location, presence: true
   validates :price, numericality: { greater_than: 0 }

@@ -74,6 +74,14 @@ pokemons.each do |pokemon_name|
     user: User.all.sample
   )
 
+  # Getting pokemon photo and attaching it to pokemon instance
+  pokemon_id = pokemon["id"].to_s.rjust(3, "0")
+
+  pokemon_photo_url = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/#{pokemon_id}.png"
+  pokemon_photo = URI.open(pokemon_photo_url)
+  new_pokemon.photo.attach(io: pokemon_photo, filename: "#{pokemon["species"]["name"]}.png", content_type: 'image/png')
+
+
   puts "→ #{new_pokemon.name.capitalize} created! #{EMOJI.sample} - Total actual pokemons: #{Pokemon.count}" if new_pokemon.save!
   line
   sleep(3)

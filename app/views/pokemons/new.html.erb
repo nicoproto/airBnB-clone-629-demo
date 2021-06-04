@@ -6,6 +6,7 @@
     <%= f.input :price %>
     <%= f.input :location %>
     <%= f.input :tag_list, as: :check_boxes, collection: Pokemon::CATEGORIES %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit %>
   <% end %>
 </div>
