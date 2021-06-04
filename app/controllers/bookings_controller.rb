@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :update]
+  before_action :set_booking, only: [:show, :destroy, :update]
 
   def show; end
 
@@ -23,6 +23,11 @@ class BookingsController < ApplicationController
 
   def update
     @booking.send("#{params[:status]}!")
+    redirect_to dashboard_path
+  end
+
+  def destroy
+    @booking.destroy
     redirect_to dashboard_path
   end
 
